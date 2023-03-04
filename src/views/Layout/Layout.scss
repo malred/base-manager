@@ -1,0 +1,118 @@
+#components-layout-demo-custom-trigger .trigger {
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+#components-layout-demo-custom-trigger .trigger:hover {
+    color: #1890ff;
+}
+.ant-layout {
+    background-image: linear-gradient(to left bottom, rgba(130, 157, 244, 0.5), rgba(217, 54, 232, 0.5));
+}
+:where(.css-dev-only-do-not-override-10ed4xt)[class^="ant-layout"] [class^="ant-layout"],
+:where(.css-dev-only-do-not-override-10ed4xt)[class*=" ant-layout"] [class^="ant-layout"],
+:where(.css-dev-only-do-not-override-10ed4xt)[class^="ant-layout"] [class*=" ant-layout"],
+:where(.css-dev-only-do-not-override-10ed4xt)[class*=" ant-layout"] [class*=" ant-layout"] {
+    // 毛玻璃 - 白边
+    border-right: 1px solid rgba(#fff, 0.6);
+    // 毛玻璃 - 背景模糊
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    // 毛玻璃 - 微弱灰背景
+    background: rgba(255, 255, 255, 0.1);
+    // 毛玻璃 - 圆角
+    // border-radius: 5px;
+    // overflow: hidden;
+}
+.layout {
+    width: 100vw;
+    height: 100vh;
+    .logo {
+        height: 42px;
+        margin: 16px 12px;
+        line-height: 40px;
+        color: rgb(30, 167, 221);
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        // 毛玻璃 - 两个白边
+        border-left: 1px solid rgba(#fff, 0.6);
+        border-top: 1px solid rgba(#fff, 0.6);
+        // 毛玻璃 - 背景模糊
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        // 毛玻璃 - 微弱灰背景
+        background: rgba(255, 255, 255, 0.1);
+        // 毛玻璃 - 圆角
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 15px;
+        background: none;
+        align-items: center;
+        .menu {
+            // width: 70vw;
+            background: none;
+            & > li {
+                border: none;
+            }
+        }
+        .ant-menu-root {
+            background: none;
+        }
+        .ant-menu-horizontal {
+            border: none;
+        }
+    }
+}
+.trigger {
+    font-size: 18px;
+}
+// 顶部
+:where(.css-dev-only-do-not-override-10ed4xt).ant-layout-header {
+    height: 64px;
+    padding-inline: 18px;
+    color: rgba(0, 0, 0, 0.88);
+    border: none;
+    line-height: 64px;
+}
+.ant-layout-sider-children {
+    // background-image: linear-gradient(to right bottom, rgba(130, 157, 244, 0.5), rgba(217, 54, 232, 0.5));
+    // background: none;
+}
+// 左侧menu的item选中展开的子项
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+    background: none;
+}
+// 左侧menu的item选中时的color
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark .ant-menu-item-selected {
+    color: #fff;
+}
+// 左侧menu整体
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    background: none;
+}
+// 左侧菜单的item
+.ant-menu-item {
+    // 毛玻璃 - 两个白边
+    border-left: 2px solid rgba(#fff, 0.6);
+    border-top: 2px solid rgba(#fff, 0.6);
+    // 毛玻璃 - 背景模糊
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    // 毛玻璃 - 微弱灰背景
+    background: rgba(255, 255, 255, 0.1);
+    // 毛玻璃 - 圆角
+    // border-radius: 5px;
+    overflow: hidden;
+    // 毛玻璃 - 阴影
+    // x: 0,y: 25px,偏移: 45px,颜色:
+    box-shadow: 0, 25px, 45px, rgba(0, 0, 0, 0.5);
+}

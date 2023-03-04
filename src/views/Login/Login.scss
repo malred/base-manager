@@ -1,0 +1,35 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    // 毛玻璃 - 渐变背景
+    background-image: linear-gradient(to left bottom, rgba(130, 157, 244, 0.5), rgba(217, 54, 232, 0.5));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+        margin-top: 10px;
+        text-align: center;
+    }
+    button {
+        margin-right: 50px;
+    }
+    .content {
+        // padding-top: 20px;padding-bottom: 20px;
+        width: 500px;
+        height: 210px;
+        // 毛玻璃 - 两个白边
+        border-left: 1px solid rgba(#fff, 0.6);
+        border-top: 1px solid rgba(#fff, 0.6);
+        // 毛玻璃 - 背景模糊
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        // 毛玻璃 - 微弱灰背景
+        background: rgba(255, 255, 255, 0.1);
+        // 毛玻璃 - 圆角
+        border-radius: 10px;
+        overflow: hidden;
+        // 毛玻璃 - 阴影
+        // x: 0,y: 25px,偏移: 45px,颜色:
+        box-shadow: 0, 25px, 45px, rgba(0, 0, 0, 0.5);
+    }
+}
