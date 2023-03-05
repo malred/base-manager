@@ -92,10 +92,13 @@
 // 左侧menu的item选中时的color
 :where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark .ant-menu-item-selected {
     color: #fff;
+    // color: rgb(146 8 146 / 95%);
+    background-color: rgb(130, 157, 243);
 }
 // 左侧menu整体
 :where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark {
     color: rgba(0, 0, 0, 0.8);
+    // color: darken(rgb(217, 54, 232), 5);
     font-weight: 500;
     background: none;
 }
@@ -115,4 +118,17 @@
     // 毛玻璃 - 阴影
     // x: 0,y: 25px,偏移: 45px,颜色:
     box-shadow: 0, 25px, 45px, rgba(0, 0, 0, 0.5);
+}
+// 左侧menu可下拉的item子项
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-inline.ant-menu-root .ant-menu-submenu-title {
+    // 毛玻璃 - 两个白边
+    border-left: 2px solid rgba(#fff, 0.6);
+    border-top: 2px solid rgba(#fff, 0.6);
+}
+// 左侧menu可下拉的item子项被选中
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title {
+    color: darken(rgb(217, 54, 232), 8);
+}
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-submenu-title:hover {
+    color: darken(rgb(217, 54, 232), 5) !important;
 }

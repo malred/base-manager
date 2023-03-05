@@ -1,0 +1,51 @@
+.search {
+    margin-bottom: 12px;
+}
+// 整个table
+:where(.css-dev-only-do-not-override-10ed4xt).ant-table-wrapper {
+    // margin: 0 auto;
+    margin-left: 80px;
+    clear: both;
+    // 调整宽度
+    max-width: 85%;
+}
+// table子项的样式
+:where(.css-dev-only-do-not-override-10ed4xt).ant-table-wrapper .ant-table {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* background: #ffffff; */
+    border-radius: 6px;
+    // 毛玻璃 - 两个白边
+    border-left: 2px solid rgba(#fff, 0.6);
+    border-top: 2px solid rgba(#fff, 0.6);
+    // 毛玻璃 - 背景模糊
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    // 毛玻璃 - 微弱灰背景
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;  
+}
+// table第一行(标题)
+:where(.css-dev-only-do-not-override-10ed4xt).ant-table-wrapper .ant-table-thead > tr > th,
+:where(.css-dev-only-do-not-override-10ed4xt).ant-table-wrapper .ant-table-thead > tr > td {
+    position: relative;
+    color: rgba(0, 0, 0, 0.88);
+    font-weight: 600;
+    text-align: start;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s ease;
+}
+:where(.css-dev-only-do-not-override-10ed4xt).ant-table-wrapper .ant-table-tbody >tr >td {
+    transition: background 0.2s,border-color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    background: rgba(255, 255, 255, 0.1);
+}

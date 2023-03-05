@@ -16,7 +16,9 @@ export default function MyNotification({ notiMsg }) {
             // 弹出提示框
             api[notiMsg.type]({
                 // message: '系统提示',
-                description: notiMsg.description
+                description: notiMsg.description,
+                // 持续时间
+                duration: 1
             })
         }
     }, [notiMsg])

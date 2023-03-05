@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Login.scss'
-import { Button, Form, Input, notification } from 'antd'
+import { Button, Form, Input } from 'antd'
 import { $loginApi } from '../../api'
 import MyNotification from '../../components/MyNotification/MyNotification'
 export default function Login() {
     // 导航
     let navigate = useNavigate()
+    // 如果已经登录过,就直接跳转layout
+    useEffect(() => {
+        if (sessionStorage.getItem('token')) {
+            navigate('/layout ')
+        }
+    }, [])
     // 提示框
     // const [api, contextHolder] = notification.useNotification()
     let [notiMsg, setNotiMsg] = useState({ type: '', description: '' })
@@ -23,16 +29,18 @@ export default function Login() {
     // 表单成功提交
     const onFinish = async (values) => {
         // console.log('Success:', values);  
-        let { msg, code } = await $loginApi(values)
-        if (code > 0) {
+        try {
+            let { msg, status } = await $loginApi(values)
+            // console.log(msg, status);
             // set State 每次都是新的state
-            // openNotification('success', msg)
             setNotiMsg({ type: 'success', description: msg })
             // 跳转到首页
-            navigate('/layout')
-        } else {
-            // openNotification('error', msg)
-            setNotiMsg({ type: 'error', description: msg })
+            setTimeout(() => {
+                navigate('/layout')
+            }, 600);
+        } catch (e) {
+            // console.log(e.response.data.msg);
+            setNotiMsg({ type: 'error', description: e.response.data.msg })
         }
     };
     // const onFinishFailed = (errorInfo) => {

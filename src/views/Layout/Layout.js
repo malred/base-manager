@@ -3,13 +3,15 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  HomeOutlined, MessageOutlined, ExclamationCircleOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  AppstoreOutlined, MailOutlined, SettingOutlined
+  MailOutlined, SettingOutlined
 } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
-import React, { useState } from 'react';
+import { Layout, Menu, Modal } from 'antd';
+const { confirm } = Modal
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Outlet } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 import './Layout.scss'
 // 顶部导航的数据(菜单项)
@@ -17,12 +19,12 @@ const navItems = [
   {
     label: '首页',
     key: 'home',
-    icon: <MailOutlined />,
+    icon: <HomeOutlined />,
   },
   {
     label: '邮件',
     key: 'mail',
-    icon: <AppstoreOutlined />,
+    icon: <MailOutlined />,
     // disabled: true,
   },
   {
@@ -32,7 +34,7 @@ const navItems = [
     //   </a>
     // ),
     label: "通知",
-    icon: <AppstoreOutlined />,
+    icon: <MessageOutlined />,
     key: 'alipay',
   },
   {
@@ -80,7 +82,7 @@ const menuItems = [
     label: '账户管理',
     children: [
       {
-        key: '1-1',
+        key: 'role',
         label: '角色管理'
       },
       {
@@ -108,13 +110,21 @@ const menuItems = [
       }
     ]
   },
-  {
-    key: '3',
-    icon: <UploadOutlined />,
-    label: 'nav 3',
-  },
+  // {
+  //   key: '3',
+  //   icon: <UploadOutlined />,
+  //   label: 'nav 3',
+  // },
 ]
 export default function () {
+  // 路由跳转操作
+  const navigate = useNavigate()
+  // 如果没有登录,就不能直接访问layout
+  useEffect(() => {
+    if (!sessionStorage.getItem('token')) {
+      navigate("/")
+    }
+  }, [])
   // 侧边栏折叠状态
   const [collapsed, setCollapsed] = useState(false);
   // 当前选中的Menu的item
@@ -123,6 +133,30 @@ export default function () {
   const onClick = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
+    switch (e.key) {
+      // 角色管理
+      case 'role':
+        // 跳转路由
+        navigate('/layout/role')
+        break
+      // 如果点击退出,就清空session
+      case 'exit':
+        // 弹出提示框
+        confirm({
+          icon: <ExclamationCircleOutlined />,
+          content: "是否要退出系统?",
+          onOk() {
+            sessionStorage.clear()
+            localStorage.clear()
+            setTimeout(() => {
+              navigate('/')
+            }, 500);
+          },
+          okText: "确认",
+          cancelText: "取消"
+        });
+        break
+    }
   };
   return (
     <Layout className='layout'>
@@ -153,7 +187,8 @@ export default function () {
             minHeight: 280,
           }}
         >
-          Content
+          {/* 显示子路由 */}
+          <Outlet></Outlet>
         </Content>
       </Layout>
     </Layout>

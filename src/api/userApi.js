@@ -6,17 +6,14 @@ import md5 from 'md5'; // 可以用穷举法解密
 // export const _login
 export const $login = async (params) => {
     // 密码加密
-    // 同样的密码md5加密后是一样的
-    // params.upass = md5(md5(params.upass).split('').reverse().join(''))
+    // 同样的内容md5加密后是一样的
+    params.upass = md5(md5(params.upass).split('').reverse().join(''))
     // console.log(params);
     // 好像axios默认包一层data
     let { uname, upass } = params
-    let { data } = await axios.post('/user/login', { uname, upass }, {
+    let { data } = await axios.post('/login', { uname, upass }, {
         headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,PUT,PATCH,DELETE',
-            "Content-Type": 'multipart/form-data'
+            "Content-Type": "multipart/form-data"
         }
     })
     // console.log(data);
